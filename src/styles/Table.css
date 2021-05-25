@@ -1,0 +1,22 @@
+.table {
+  margin-top: 20px;
+  height: 250px;
+  width: 100%;
+  color: #6a5d5d;
+  background-color: #fff;
+  overflow-x: scroll;
+}
+
+.table table {
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+tr:nth-of-type(odd) {
+  background-color: #f3f2f8;
+}
