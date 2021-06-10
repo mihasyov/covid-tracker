@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   MapContainer as LeafletMap,
   useMap,
@@ -20,11 +21,10 @@ function ChangeMapView({ coords }) {
   return null;
 }
 
-function Map({ countries, casesType, center, zoom }) {
-  console.log("map render")
+const Map = ({ countriesList, casesType, center }) => {
   return (
-    <div className="map">
-      <LeafletMap center={center} zoom={zoom} icon={Icon}>
+    <div className="app__map">
+      <LeafletMap center={center} zoom={4} icon={Icon}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -40,11 +40,19 @@ function Map({ countries, casesType, center, zoom }) {
           }
         ></Marker>
 
-        {showDataOnMap(countries, casesType)}
+        {showDataOnMap(countriesList, casesType)}
         <ChangeMapView coords={center} />
       </LeafletMap>
     </div>
   );
 }
 
-export default Map;
+const mapStateToProps = (state) => ({
+  countriesList: state.countriesList,
+  center: [
+    state.countryDetails?.countryInfo?.lat || 44,
+    state.countryDetails?.countryInfo?.long || -40,
+  ],
+});
+
+export default connect(mapStateToProps)(Map);

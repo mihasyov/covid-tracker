@@ -1,6 +1,6 @@
 import numeral from 'numeral';
 
-export const graphOptions = {
+export const chartOptions = {
     legend: {
         display: false
     },

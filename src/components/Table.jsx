@@ -1,14 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
+import numeral from "numeral";
 import "../styles/Table.css";
-import numeral from 'numeral';
 
-function Table({ countries }) {
-  console.log("table render")
+const Table = ({ countriesList }) => {
   return (
     <div className="table">
       <table>
         <tbody>
-          {countries.map(({ country, cases }, i) => (
+          {countriesList.map(({ country, cases }, i) => (
             <tr key={i}>
               <td>{country}</td>
               <td>
@@ -22,4 +22,8 @@ function Table({ countries }) {
   );
 }
 
-export default React.memo(Table);
+const mapStateToProps = (state) => ({
+  countriesList: state.countriesList.sort((a, b) => b.cases - a.cases),
+});
+
+export default connect(mapStateToProps)(Table);

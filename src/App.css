@@ -9,24 +9,14 @@ body {
   min-height: 100vh;
 }
 
-.loader:empty {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  filter: blur(10px);
-  background: #fff;
-}
-
 .app {
   display: flex;
-  justify-content: space-evenly;
-  padding: 20px;
+  justify-content: space-around;
+  padding: 10px;
 }
 
 .app__main {
-  flex: 0.8;
+  flex: 0.75;
 }
 
 .app__header {
@@ -53,10 +43,10 @@ body {
 }
 
 .app__side {
-  width: 350px;
+  min-width: 400px;
 }
 
-h3.app__graphTitle {
+h3.app__chartTitle {
   position: relative;
   margin: 50px 0 20px;
 }
@@ -64,5 +54,11 @@ h3.app__graphTitle {
 @media (max-width: 900px) {
   .app {
     flex-direction: column;
+  }
+  .app__main {
+    margin-bottom: 2rem;
+  }
+  .app__side {
+    margin: 0 auto;
   }
 }
